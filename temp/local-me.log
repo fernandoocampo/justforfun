@@ -1,0 +1,8 @@
+docker run --rm -v $(pwd):/usr/src/github.com/wearefair/api-proxy \
+-w /usr/src/github.com/wearefair/api-proxy \
+-e GOOS=darwin \
+-e GOARCH=amd64 \
+-e GOPATH=/usr \
+golang:1.10 \
+/bin/bash -c "GOOS=linux go get github.com/jteeuwen/go-bindata/... && \
+        go-bindata -o routes.go routes.yaml"
