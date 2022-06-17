@@ -97,3 +97,50 @@ go test -run none -benchtime 5s -bench SwapPairsInternet -benchmem -cpuprofile=c
 go tool pprof nodes.test cpu.out
 go tool pprof -alloc_space nodes.test mem.out
 ```
+
+# Reverse Nodes in k-group
+
+Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
+
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+
+You may not alter the values in the list's nodes, only nodes themselves may be changed.
+
+k = 2
+(1)->(2)->(3)->(4)->(5)
+        vvvv
+(2)->(1)->(4)->(3)->(5)
+
+
+k = 3
+(1)->(2)->(3)->(4)->(5)
+        vvvv
+(3)->(2)->(1)->(4)->(5)
+
+Constraints:
+
+The number of nodes in the list is n.
+1 <= k <= n <= 5000
+0 <= Node.val <= 1000
+ 
+
+Follow-up: Can you solve the problem in O(1) extra memory space?
+
+## Testing and Benchmarking
+
+* Testing
+```sh
+go test -v -count=1 -timeout 3s -run ^TestReverseKGroup github.com/fernandoocampo/justforfun/nodes
+go test -v -count=1 -timeout 3s -run ^TestReverseKGroupInternet github.com/fernandoocampo/justforfun/nodes
+```
+
+* Benchmarking
+```sh
+rm cpu.out nodes.test mem.out trace.out 
+go test -run none -benchtime 5s -bench ReverseKGroup -benchmem -cpuprofile=cpu.out -memprofile=mem.out -trace=trace.out github.com/fernandoocampo/justforfun/nodes
+
+go test -run none -benchtime 5s -bench ReverseKGroupInternet -benchmem -cpuprofile=cpu.out -memprofile=mem.out -trace=trace.out github.com/fernandoocampo/justforfun/nodes
+
+go tool pprof nodes.test cpu.out
+go tool pprof -alloc_space nodes.test mem.out
+```
