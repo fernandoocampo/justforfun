@@ -1,9 +1,5 @@
 package parentheses
 
-import (
-	"log"
-)
-
 type holder struct {
 	text   []rune
 	result []string
@@ -48,27 +44,19 @@ func GenerateParenthesisInternet(n int) []string {
 	return res
 }
 
-var stack int
-
 func dfs(left, right, idx int, bytes []byte, res *[]string) {
-	locally := stack
-	stack++
 	if left == 0 && right == 0 {
-		log.Println("stack", locally, "left", left, "right", right, "idx", idx, "bytes", string(bytes))
 		*res = append(*res, string(bytes))
-		log.Println("res", res)
 		return
 	}
 
 	if left > 0 {
 		bytes[idx] = '('
-		log.Println("stackL", locally, "left", left, "right", right, "idx", idx, "bytes", string(bytes))
 		dfs(left-1, right, idx+1, bytes, res)
 	}
 
 	if right > 0 && left < right {
 		bytes[idx] = ')'
-		log.Println("stackR", locally, "left", left, "right", right, "idx", idx, "bytes", string(bytes))
 		dfs(left, right-1, idx+1, bytes, res)
 	}
 }
