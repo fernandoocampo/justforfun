@@ -1,4 +1,6 @@
-# Valid Parentheses
+# Parentheses katas
+
+## Valid Parentheses
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
@@ -27,7 +29,7 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
 
-## Testing and Benchmarking
+### Testing and Benchmarking
 
 * testing
 
@@ -49,7 +51,7 @@ go tool pprof -alloc_space parentheses.test mem.out
 rm cpu.out mem.out trace.out parentheses.test
 ```
 
-# 22. Generate Parentheses
+## 22. Generate Parentheses
 Medium
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
@@ -66,7 +68,7 @@ Constraints:
 
 1 <= n <= 8
 
-## Testing and Benchmarking
+### Testing and Benchmarking
 
 * testing
 
@@ -160,3 +162,47 @@ want
 (())()
 ()(())
 ()()()
+
+
+## 32. Longest Valid Parentheses
+Hard
+
+8965
+
+291
+
+Add to List
+
+Share
+Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+
+ 
+
+Example 1:
+
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+Example 2:
+
+Input: s = ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()".
+Example 3:
+
+Input: s = ""
+Output: 0
+ 
+
+Constraints:
+
+0 <= s.length <= 3 * 104
+s[i] is '(', or ')'.
+
+### Testing and benchmarking
+
+* testing
+
+```sh
+go test -count 1 -race -timeout 2s -run ^TestLongestValidParentheses$ github.com/fernandoocampo/justforfun/parentheses
+```
