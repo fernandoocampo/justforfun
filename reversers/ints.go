@@ -1,4 +1,4 @@
-package reverseints
+package reversers
 
 import (
 	"math"

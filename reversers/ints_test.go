@@ -1,9 +1,9 @@
-package reverseints_test
+package reversers_test
 
 import (
 	"testing"
 
-	"github.com/fernandoocampo/justforfun/reverseints"
+	"github.com/fernandoocampo/justforfun/reversers"
 )
 
 func TestReverse(t *testing.T) {
@@ -31,7 +31,7 @@ func TestReverse(t *testing.T) {
 
 	for name, data := range cases {
 		t.Run(name, func(st *testing.T) {
-			got := reverseints.Reverse(data.input)
+			got := reversers.Reverse(data.input)
 			if data.want != got {
 				st.Errorf("want: %d, but got: %d", data.want, got)
 			}
@@ -64,7 +64,7 @@ func TestReverseLoop(t *testing.T) {
 
 	for name, data := range cases {
 		t.Run(name, func(st *testing.T) {
-			got := reverseints.ReverseLoop(data.input)
+			got := reversers.ReverseLoop(data.input)
 			if data.want != got {
 				st.Errorf("want: %d, but got: %d", data.want, got)
 			}
@@ -74,12 +74,12 @@ func TestReverseLoop(t *testing.T) {
 
 func BenchmarkReverse(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		reverseints.Reverse(-123)
+		reversers.Reverse(-123)
 	}
 }
 
 func BenchmarkReverseLoop(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		reverseints.ReverseLoop(-123)
+		reversers.ReverseLoop(-123)
 	}
 }
