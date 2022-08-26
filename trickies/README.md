@@ -1,0 +1,1 @@
+# trickies katas
