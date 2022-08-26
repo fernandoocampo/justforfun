@@ -29,3 +29,11 @@ func reverseString(ctx context.Context, input string) <-chan byte {
 	}()
 	return stream
 }
+
+func ReverseNormalString(input string) string {
+	var builder strings.Builder
+	for i := len(input) - 1; i >= 0; i-- {
+		builder.WriteByte(input[i])
+	}
+	return builder.String()
+}
