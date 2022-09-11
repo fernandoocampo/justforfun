@@ -7,6 +7,15 @@ import (
 	"strings"
 )
 
+// Addend define types that can be added or concat.
+// In Go we use an interface to restrict what types
+// we can use for a specific set of type parameters.
+// This interface CAN'T be used in a traditional
+// polymorphic function.
+type Addend interface {
+	string | int
+}
+
 // Vector defines a vector that contains a specific type
 // given at compile time.
 // it restricts the constructions of the vector to a single
@@ -71,4 +80,8 @@ func (v Vector[T]) Last() (T, error) {
 
 func (n *Node[T]) Value() T {
 	return n.value
+}
+
+func Add[T Addend](valuea T, valueb T) T {
+	return valuea + valueb
 }

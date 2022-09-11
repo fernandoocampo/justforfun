@@ -26,3 +26,6 @@ constructor
 
 https://github.com/fernandoocampo/justforfun/blob/f1f3a1b495925f1bc9322ae610c3814193b3ab3c/generics/generics.go#L27-L33
 
+* Type as constraint
+
+if we try to use a type different from int and string we are going to get a compile error like this: `TYPE does not implement generics.Addend`.

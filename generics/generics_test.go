@@ -53,6 +53,8 @@ func TestPrintSlices(t *testing.T) {
 	for name, data := range cases {
 		name, data := name, data
 		t.Run(name, func(st *testing.T) {
+			st.Parallel()
+
 			writer := bytes.NewBufferString("")
 
 			generics.Print(writer, data.input)
@@ -99,4 +101,28 @@ func TestBidirectionalLinkedList(t *testing.T) {
 	assert.Equal(t, expectedPreviousValue, middleNode.Previous.Value())
 	assert.Equal(t, expectedMiddleValue, middleNode.Value())
 	assert.Equal(t, expectedNextValue, middleNode.Next.Value())
+}
+
+func TestAddWithInts(t *testing.T) {
+	t.Parallel()
+	// Given
+	valuea := 1
+	valueb := 2
+	want := 3
+
+	got := generics.Add(valuea, valueb)
+
+	assert.Equal(t, want, got)
+}
+
+func TestAddWithStrings(t *testing.T) {
+	t.Parallel()
+	// Given
+	valuea := "1"
+	valueb := "2"
+	want := "12"
+
+	got := generics.Add(valuea, valueb)
+
+	assert.Equal(t, want, got)
 }
