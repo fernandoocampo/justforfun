@@ -29,3 +29,11 @@ https://github.com/fernandoocampo/justforfun/blob/f1f3a1b495925f1bc9322ae610c381
 * Type as constraint
 
 if we try to use a type different from int and string we are going to get a compile error like this: `TYPE does not implement generics.Addend`.
+
+interface to restrict types
+
+https://github.com/fernandoocampo/justforfun/blob/41d281bfd891c32f8fe69dccc0a1c2240bbfdcc6/generics/generics.go#L10-L17
+
+how to specify the constraint
+
+https://github.com/fernandoocampo/justforfun/blob/41d281bfd891c32f8fe69dccc0a1c2240bbfdcc6/generics/generics.go#L85-L87
