@@ -7,6 +7,7 @@ import (
 )
 
 func TestTwoSum(t *testing.T) {
+	t.Parallel()
 	cases := map[string]struct {
 		nums   []int
 		target int
@@ -40,15 +41,18 @@ func TestTwoSum(t *testing.T) {
 	}
 
 	for name, testdata := range cases {
+		givenData := testdata
 		t.Run(name, func(st *testing.T) {
-			got := twosum.TwoSum(testdata.nums, testdata.target)
-			if len(got) != len(testdata.want) {
-				st.Errorf("want: %+v, but got: %+v", testdata.want, got)
+			st.Parallel()
+
+			got := twosum.TwoSum(givenData.nums, givenData.target)
+			if len(got) != len(givenData.want) {
+				st.Errorf("want: %+v, but got: %+v", givenData.want, got)
 				st.FailNow()
 			}
-			for idx, v := range testdata.want {
+			for idx, v := range givenData.want {
 				if v != got[idx] {
-					st.Errorf("want: %+v, but got: %+v", testdata.want, got)
+					st.Errorf("want: %+v, but got: %+v", givenData.want, got)
 				}
 			}
 		})

@@ -1,6 +1,6 @@
 module github.com/fernandoocampo/justforfun
 
-go 1.18
+go 1.21
 
 require github.com/aws/aws-sdk-go v1.15.26
 

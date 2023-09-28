@@ -7,6 +7,8 @@ import (
 )
 
 func TestAddTwoNumbers(t *testing.T) {
+	t.Parallel()
+
 	cases := map[string]struct {
 		l1   *linksum.ListNode
 		l2   *linksum.ListNode
@@ -44,8 +46,12 @@ func TestAddTwoNumbers(t *testing.T) {
 		},
 	}
 
-	for name, testdata := range cases {
+	for name, data := range cases {
+		testdata := data
+
 		t.Run(name, func(st *testing.T) {
+			st.Parallel()
+
 			got := linksum.AddTwoNumbers(testdata.l1, testdata.l2)
 			compareListNodes(st, got, testdata.want)
 		})
