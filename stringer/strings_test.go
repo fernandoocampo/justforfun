@@ -1,6 +1,7 @@
 package stringer_test
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/fernandoocampo/justforfun/stringer"
@@ -55,6 +56,33 @@ func TestIsUpperCaseSmart(t *testing.T) {
 			// Then
 			if got != wantedValue {
 				st.Errorf("%q: want: %t, but got: %t", givenValue, wantedValue, got)
+			}
+		})
+	}
+}
+
+func TestSortStringsByLength(t *testing.T) {
+	t.Parallel()
+	// Given
+	cases := map[string]struct {
+		given []string
+		want  []string
+	}{
+		"telescopes": {
+			given: []string{"Telescopes", "Glasses", "Eyes", "Monocles"},
+			want:  []string{"Eyes", "Glasses", "Monocles", "Telescopes"},
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			testData := testData
+			st.Parallel()
+			// When
+			got := stringer.SortByLength(testData.given)
+			// Then
+			if !slices.Equal(testData.want, got) {
+				t.Errorf("want: %+v, but got: %+v", testData.want, got)
 			}
 		})
 	}
