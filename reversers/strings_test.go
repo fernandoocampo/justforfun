@@ -44,9 +44,13 @@ func TestReverseNormalString(t *testing.T) {
 			input: "anitalavalatina",
 			want:  "anitalavalatina",
 		},
-		"any text": {
-			input: "any text",
-			want:  "txet yna",
+		"anytext": {
+			input: "anytext",
+			want:  "txetyna",
+		},
+		"ultr53o?n": {
+			input: "ultr53o?n",
+			want:  "nortlu",
 		},
 	}
 

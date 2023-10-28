@@ -3,6 +3,7 @@ package reversers
 import (
 	"context"
 	"strings"
+	"unicode"
 )
 
 func ReverseString(ctx context.Context, input string) string {
@@ -33,6 +34,9 @@ func reverseString(ctx context.Context, input string) <-chan byte {
 func ReverseNormalString(input string) string {
 	var builder strings.Builder
 	for i := len(input) - 1; i >= 0; i-- {
+		if !unicode.IsLetter(rune(input[i])) {
+			continue
+		}
 		builder.WriteByte(input[i])
 	}
 	return builder.String()

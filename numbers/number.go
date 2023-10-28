@@ -9,6 +9,35 @@ func FindSmallestNumber(data []int) int {
 	return data[0]
 }
 
+func SmallestIntegerFinder(numbers []int) int {
+	sort.Ints(numbers)
+	return numbers[0]
+}
+
+func SmallestIntegerFinderFor(numbers []int) int {
+	smallest := numbers[0]
+
+	for i := range numbers {
+		if numbers[i] < smallest {
+			smallest = numbers[i]
+		}
+	}
+
+	return smallest
+}
+
+func SmallestIntegerFinderForTwo(numbers []int) int {
+	smallest := numbers[0]
+
+	for i := 0; i < len(numbers); i++ {
+		if numbers[i] < smallest {
+			smallest = numbers[i]
+		}
+	}
+
+	return smallest
+}
+
 func MakeFibos(numberOfFibos int) []int {
 	result := make([]int, numberOfFibos)
 	lastNumber := 1

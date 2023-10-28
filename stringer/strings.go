@@ -29,3 +29,23 @@ func SortByLength(arr []string) []string {
 
 	return arr
 }
+
+func GetMiddle(s string) string {
+	if len(s) < 2 {
+		return s
+	}
+
+	if len(s)%2 != 0 {
+		return string(s[(len(s))/2])
+	}
+
+	return s[(len(s)/2)-1 : (len(s)/2)+1]
+}
+
+func GetMiddleTwo(s string) string {
+	n := len(s)
+	if n == 0 {
+		return s
+	}
+	return s[(n-1)/2 : n/2+1]
+}

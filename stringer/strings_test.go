@@ -87,3 +87,36 @@ func TestSortStringsByLength(t *testing.T) {
 		})
 	}
 }
+
+func TestMiddle(t *testing.T) {
+	cases := map[string]struct {
+		input string
+		want  string
+	}{
+		"test": {
+			input: "test",
+			want:  "es",
+		},
+		"testing": {
+			input: "testing",
+			want:  "t",
+		},
+		"middle": {
+			input: "middle",
+			want:  "dd",
+		},
+		"A": {
+			input: "A",
+			want:  "A",
+		},
+	}
+
+	for name, data := range cases {
+		t.Run(name, func(st *testing.T) {
+			got := stringer.GetMiddle(data.input)
+			if got != data.want {
+				t.Errorf("given: %s, want: %s, but got: %s", name, data.want, got)
+			}
+		})
+	}
+}
