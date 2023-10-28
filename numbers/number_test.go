@@ -1,6 +1,7 @@
 package numbers_test
 
 import (
+	"slices"
 	"testing"
 
 	"github.com/fernandoocampo/justforfun/numbers"
@@ -31,5 +32,33 @@ func TestFindSmallestNumber(t *testing.T) {
 			}
 		})
 	}
+}
 
+func TestGenerateFibon(t *testing.T) {
+	t.Parallel()
+	// Given
+	cases := map[string]struct {
+		numbers int
+		want    []int
+	}{
+		"011235": {
+			numbers: 6,
+			want:    []int{0, 1, 1, 2, 3, 5},
+		},
+		"0112358": {
+			numbers: 7,
+			want:    []int{0, 1, 1, 2, 3, 5, 8},
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// When
+			got := numbers.MakeFibos(testData.numbers)
+			// Then
+			if !slices.Equal(testData.want, got) {
+				t.Errorf("want: %+v, but got: %+v", testData.want, got)
+			}
+		})
+	}
 }
