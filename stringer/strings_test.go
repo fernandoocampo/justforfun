@@ -120,3 +120,40 @@ func TestMiddle(t *testing.T) {
 		})
 	}
 }
+
+func TestScrabbleScore(t *testing.T) {
+	cases := map[string]struct {
+		input string
+		want  int
+	}{
+		"empty": {
+			input: "",
+			want:  0,
+		},
+		"a": {
+			input: "a",
+			want:  1,
+		},
+		"street": {
+			input: "street",
+			want:  6,
+		},
+		"STREET": {
+			input: "STREET",
+			want:  6,
+		},
+		"st re et": {
+			input: "st re et",
+			want:  6,
+		},
+	}
+
+	for name, data := range cases {
+		t.Run(name, func(st *testing.T) {
+			got := stringer.ScrabbleScore(data.input)
+			if got != data.want {
+				t.Errorf("given: %s, want: %d, but got: %d", name, data.want, got)
+			}
+		})
+	}
+}
