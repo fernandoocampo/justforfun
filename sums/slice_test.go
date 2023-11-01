@@ -7,7 +7,7 @@ import (
 	"github.com/fernandoocampo/justforfun/sums"
 )
 
-func TestBetwee(t *testing.T) {
+func TestBetween(t *testing.T) {
 	// Given
 	cases := map[string]struct {
 		start int
@@ -33,6 +33,38 @@ func TestBetwee(t *testing.T) {
 			// Then
 			if !slices.Equal(testData.want, got) {
 				t.Errorf("want: %+v, but got: %+v", testData.want, got)
+			}
+		})
+	}
+}
+
+func TestSquareSum(t *testing.T) {
+	// Given
+	cases := map[string]struct {
+		numbers []int
+		want    int
+	}{
+		"[1,2]": {
+			numbers: []int{1, 2},
+			want:    5,
+		},
+		"[0,3,4,5]": {
+			numbers: []int{0, 3, 4, 5},
+			want:    50,
+		},
+		"[]": {
+			numbers: []int{},
+			want:    0,
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// When
+			got := sums.SquareSum(testData.numbers)
+			// Then
+			if testData.want != got {
+				st.Errorf("want: %d, but got: %d", testData.want, got)
 			}
 		})
 	}
