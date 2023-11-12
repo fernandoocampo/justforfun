@@ -1,6 +1,7 @@
 package stringer
 
 import (
+	"log"
 	"sort"
 	"strings"
 	"unicode"
@@ -68,4 +69,22 @@ func ScrabbleScore(st string) int {
 	}
 
 	return result
+}
+
+func EndsWith(str, ending string) bool {
+	if ending == str {
+		return true
+	}
+
+	if len(ending) > len(str) {
+		return false
+	}
+
+	log.Println("str", str[len(str)-len(ending):])
+
+	return str[len(str)-len(ending):] == ending
+}
+
+func EndsWithBrief(str, ending string) bool {
+	return strings.HasSuffix(str, ending)
 }

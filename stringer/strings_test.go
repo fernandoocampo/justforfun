@@ -157,3 +157,99 @@ func TestScrabbleScore(t *testing.T) {
 		})
 	}
 }
+
+func TestEndsWith(t *testing.T) {
+	cases := map[string]struct {
+		input  string
+		want   bool
+		ending string
+	}{
+		"abc_c": {
+			input:  "abc",
+			ending: "c",
+			want:   true,
+		},
+		"empty": {
+			input:  "",
+			ending: "",
+			want:   true,
+		},
+		"space": {
+			input:  " ",
+			ending: "",
+			want:   true,
+		},
+		"banana_ana": {
+			input:  "banana",
+			ending: "ana",
+			want:   true,
+		},
+		"a_z": {
+			input:  "a",
+			ending: "z",
+			want:   false,
+		},
+		"empty_t": {
+			input:  "",
+			ending: "t",
+			want:   false,
+		},
+	}
+
+	for name, data := range cases {
+		t.Run(name, func(st *testing.T) {
+			got := stringer.EndsWith(data.input, data.ending)
+			if got != data.want {
+				st.Errorf("given: %s, want: %t, but got: %t", data.input, data.want, got)
+			}
+		})
+	}
+}
+
+func TestEndsWithBrief(t *testing.T) {
+	cases := map[string]struct {
+		input  string
+		want   bool
+		ending string
+	}{
+		"abc_c": {
+			input:  "abc",
+			ending: "c",
+			want:   true,
+		},
+		"empty": {
+			input:  "",
+			ending: "",
+			want:   true,
+		},
+		"space": {
+			input:  " ",
+			ending: "",
+			want:   true,
+		},
+		"banana_ana": {
+			input:  "banana",
+			ending: "ana",
+			want:   true,
+		},
+		"a_z": {
+			input:  "a",
+			ending: "z",
+			want:   false,
+		},
+		"empty_t": {
+			input:  "",
+			ending: "t",
+			want:   false,
+		},
+	}
+
+	for name, data := range cases {
+		t.Run(name, func(st *testing.T) {
+			got := stringer.EndsWithBrief(data.input, data.ending)
+			if got != data.want {
+				st.Errorf("given: %s, want: %t, but got: %t", data.input, data.want, got)
+			}
+		})
+	}
+}
