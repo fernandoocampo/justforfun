@@ -63,6 +63,35 @@ func TestGenerateFibon(t *testing.T) {
 	}
 }
 
+func TestSortOddNumbers(t *testing.T) {
+	t.Parallel()
+	// Given
+	cases := map[string]struct {
+		input []int
+		want  []int
+	}{
+		"one": {
+			input: []int{7, 1},
+			want:  []int{1, 7},
+		},
+		"two": {
+			input: []int{5, 8, 6, 3, 4},
+			want:  []int{3, 8, 6, 5, 4},
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// When
+			got := numbers.SortArray(testData.input)
+			// Then
+			if !slices.Equal(testData.want, got) {
+				st.Errorf("want: %+v, but got: %+v", testData.want, got)
+			}
+		})
+	}
+}
+
 // go test -run=^$ -benchmem -benchtime 3s -bench ^BenchmarkFindSmallestNumber$ github.com/fernandoocampo/justforfun/numbers
 // goos: darwin
 // goarch: amd64

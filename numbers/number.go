@@ -51,3 +51,29 @@ func MakeFibos(numberOfFibos int) []int {
 
 	return result
 }
+
+func SortArray(array []int) []int {
+	var indexes []int
+	var odds []int
+
+	for indx, value := range array {
+		if value%2 != 0 {
+			indexes = append(indexes, indx)
+			odds = append(odds, value)
+		}
+	}
+
+	if len(odds) == 0 {
+		return array
+	}
+
+	sort.Slice(odds, func(i, j int) bool {
+		return odds[i] < odds[j]
+	})
+
+	for i := 0; i < len(indexes); i++ {
+		array[indexes[i]] = odds[i]
+	}
+
+	return array
+}

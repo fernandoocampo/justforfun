@@ -88,3 +88,19 @@ func EndsWith(str, ending string) bool {
 func EndsWithBrief(str, ending string) bool {
 	return strings.HasSuffix(str, ending)
 }
+
+func FlickSwitch(list []string) []bool {
+	const flick = "flick"
+	result := make([]bool, len(list))
+	flag := true
+	for i := 0; i < len(list); i++ {
+		if list[i] != flick {
+			result[i] = flag
+			continue
+		}
+
+		flag = !flag
+		result[i] = flag
+	}
+	return result
+}

@@ -253,3 +253,31 @@ func TestEndsWithBrief(t *testing.T) {
 		})
 	}
 }
+
+func TestFlickSwitch(t *testing.T) {
+	// given
+	cases := map[string]struct {
+		list []string
+		want []bool
+	}{
+		"flick_1": {
+			list: []string{"codewars", "flick", "code", "wars"},
+			want: []bool{true, false, false, false},
+		},
+		"flick_2": {
+			list: []string{"flick", "chocolate", "adventure", "sunshine"},
+			want: []bool{false, false, false, false},
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// when
+			got := stringer.FlickSwitch(testData.list)
+			// then
+			if !slices.Equal(testData.want, got) {
+				st.Errorf("want: %+v, but got: %+v", testData.want, got)
+			}
+		})
+	}
+}
