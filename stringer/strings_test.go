@@ -305,3 +305,28 @@ func TestAddLength(t *testing.T) {
 		})
 	}
 }
+
+func TestPoints(t *testing.T) {
+	// Given
+	cases := map[string]struct {
+		games []string
+		want  int
+	}{
+		"case_1": {
+			games: []string{"1:0", "2:0", "3:0", "4:0", "2:1", "3:1", "4:1", "3:2", "4:2", "4:3"},
+			want:  30,
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// When
+			got := stringer.Points(testData.games)
+
+			// Then
+			if testData.want != got {
+				st.Errorf("want: %d, but got: %d", testData.want, got)
+			}
+		})
+	}
+}

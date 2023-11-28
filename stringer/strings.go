@@ -113,3 +113,20 @@ func AddLength(input string) []string {
 	}
 	return result
 }
+
+func Points(games []string) int {
+	var result int
+	for _, game := range games {
+		score := strings.Split(game, ":")
+		if score[0] > score[1] {
+			result += 3
+			continue
+		}
+
+		if score[0] == score[1] {
+			result += 1
+			continue
+		}
+	}
+	return result
+}
