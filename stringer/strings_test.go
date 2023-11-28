@@ -281,3 +281,27 @@ func TestFlickSwitch(t *testing.T) {
 		})
 	}
 }
+
+func TestAddLength(t *testing.T) {
+	// Given
+	cases := map[string]struct {
+		input string
+		want  []string
+	}{
+		"apple_ban": {
+			input: "apple ban",
+			want:  []string{"apple 5", "ban 3"},
+		},
+	}
+
+	for testName, testData := range cases {
+		t.Run(testName, func(st *testing.T) {
+			// When
+			got := stringer.AddLength(testData.input)
+			// Then
+			if !slices.Equal(testData.want, got) {
+				st.Errorf("want: %+v, but got: %+v", testData.want, got)
+			}
+		})
+	}
+}

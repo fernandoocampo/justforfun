@@ -1,6 +1,7 @@
 package stringer
 
 import (
+	"fmt"
 	"log"
 	"sort"
 	"strings"
@@ -101,6 +102,14 @@ func FlickSwitch(list []string) []bool {
 
 		flag = !flag
 		result[i] = flag
+	}
+	return result
+}
+
+func AddLength(input string) []string {
+	result := strings.Split(input, " ")
+	for i := 0; i < len(result); i++ {
+		result[i] = fmt.Sprintf("%s %d", result[i], len(result[i]))
 	}
 	return result
 }
